@@ -7,9 +7,19 @@ let systemScore=0;
 const choices=document.querySelectorAll(".choice");
 
 
+// taking random choice of system 
+const genSystemChoice=()=>{
+    const randomChoice=["Rock", "Paper", "Scissor"];
+    let randomIdx=Math.floor(Math.random()*3);
+    return randomChoice[randomIdx];
+}
+
+
 // make a funtion for taking user and system choice
-let myChoice=(userChoice)=>{
-    console.log(`I choose:- ${userChoice}`)
+const playGame=(userChoice)=>{
+    console.log(`I choose:- ${userChoice}`);  //first its print user input choice
+    const systemchoice=genSystemChoice();     //after above system taking random choice 
+    console.log(`System choose:- ${systemchoice}`);
 }
 
 
@@ -19,7 +29,7 @@ choices.forEach((el)=>{
     el.addEventListener("click",()=>{
         const userChoice= el.getAttribute("id");
         // console.log(`user select:-${userChoice}`);
-        myChoice(userChoice);
+        playGame(userChoice);
     });
 });
 
