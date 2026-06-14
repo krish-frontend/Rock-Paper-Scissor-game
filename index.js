@@ -2,9 +2,9 @@
 // step 1. taking variable for count score
 let userScore=0;
 let systemScore=0;  
+let gameClosed = false;
 
-
-// step 2. from choices div->apply each button for pressing and counting-3div 
+// step 2. select choices div->and apply each button in choices div for making pressing and counting-3div 
 const choices=document.querySelectorAll(".choice");
 
 
@@ -29,9 +29,21 @@ const genSystemChoice=()=>{
 
 // step 5. make a funtion for taking user and system choice
 const playGame=(userChoice)=>{
-    console.log(`I choose:- ${userChoice}`);  //first its print user input choice
-    const systemchoice=genSystemChoice();     //store in var for clling return function --return a funtion to variable 
+    if(gameClosed){
+        return; // stop here
+    }
+    console.log(`I choose:- ${userChoice}`);  //first its print --user--input choice
+
+    const systemchoice = genSystemChoice();     //store in var for caling return function --return a funtion to variable 
     console.log(`System choose:- ${systemchoice}`);  //after above system taking random choice 
+    
+    //gesture select by user and system
+    let gestureSelectUser=document.querySelector("#gestureSelect1");
+    gestureSelectUser.innerText = `You=> ${userChoice}`;
+
+    let gestureselectSystem= document.querySelector("#gestureSelect2");
+    gestureselectSystem.innerText =`System=> ${systemchoice}`;
+
     
 
     // making function for each result call and show all posibbilities in paraText
@@ -53,11 +65,45 @@ const playGame=(userChoice)=>{
         return "System Win!!";
     }
 
+
+     // step 5(A)choose who is win and declared the name
+    let winnerFunct=()=>{
+        if(userScore===5){
+            gameClosed = true;
+            resultMssgShow.innerText="This Round--> User Wins..!!";
+            againPlay.style.display="block";
+        }
+        else if(systemScore===5){
+            gameClosed = true;
+            resultMssgShow.innerText="This Round--> System Wins..!!"
+            againPlay.style.display="block";
+        }
+    }
+
+
+    //this function create to end the round when anyone will reach count 10
+        let againPlay=document.querySelector("#btnRound");
+    
+        againPlay.addEventListener("click",()=>{
+            
+            userScore=0;
+            systemScore=0;
+
+            gameClosed = false;
+
+            userPoint.innerText=userScore;
+            systemPoint.innerText=systemScore;
+    
+            resultMssgShow.innerText="Play Again & Defeat Your Opponent...!!";
+            
+            againPlay.style.display="block";
+        
+        })
     
     
-    //step 5(A). consition win statement of user and system
+    //step 5(B). consition win statement of user and system
         if(userChoice === systemchoice){
-        resultMssgShow.innerText=drawResult();
+        resultMssgShow.innerText=drawResult();          //draw condition
         resultMssgShow.style.background="black";
         // resultMssgShow.style.color="white";
 
@@ -71,48 +117,22 @@ const playGame=(userChoice)=>{
         userScore++;
         userPoint.innerText=userScore;
        
-        resultMssgShow.innerText=userWin() && winnerFunct();
+        resultMssgShow.innerText=userWin();             //user win condition
         resultMssgShow.style.background="green";
-     
+
+        winnerFunct();                      //when reach 10 function stop and winner declare 
         }
         else{
         systemScore++;
         systemPoint.innerText=systemScore;
         
-        resultMssgShow.innerText=systemWin() && winnerFunct();
-        resultMssgShow.style.background="red";}
-        
-    
-    
-        
-        //choose who is win and declared the name
-        
-        const winnerFunct=()=>{
-            if(userPoint===10){
-                resultMssgShow.innerText="This Round--> User Wins..!!";
-                againPlay.style.display="block";
-            }else if(systemPoint===10){
-                resultMssgShow.innerText="This Round--> System Wins..!!"
-                againPlay.style.display="block";
-            }
+        resultMssgShow.innerText=systemWin();          //system win condition
+        resultMssgShow.style.background="red";
         }
         
-        //this function create to end the round when anyone will reach count 10
-        let againPlay=document.querySelector("#btnRound");
-    
-        againPlay.addEventListener("click",()=>{
-            
-            userScore=0;
-            systemScore=0;
-
-            userPoint.innerText=userScore;
-            systemPoint.innerText=systemScore;
-    
-            resultMssgShow.innerText="Play Again & Defeat Your Opponent...!!";
-            
-            againPlay.style.display="none";
+        winnerFunct();                  
         
-        })
+        
     }          
 
 
