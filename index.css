@@ -13,18 +13,10 @@ h1{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-.choice{
-    height: 200px;
-    width: 200px;
-    /* border: 2px solid black; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    
-    
+body{
+    background-color: aqua;
 }
+
 
 img{
     height: 190px;
@@ -45,10 +37,22 @@ img{
     
 }
 
+.choice{
+    height: 200px;
+    width: 200px;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    
+}
+
 .choice:hover{
     background-color: black;
     cursor: pointer;
     /* opacity: 0.5; */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 
@@ -88,4 +92,8 @@ img{
     color: white;
     padding: 1rem;
     border-radius: 10px;
+}
+
+button{
+    display: none;
 }
