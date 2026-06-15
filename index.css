@@ -131,7 +131,7 @@ button:hover{
 
 #footer{
     position: fixed;
-    font-size: larger;
+    font-size: small;
     font-weight: 600;
     bottom: 0;
     width: 100%;
@@ -177,21 +177,57 @@ button:hover{
 /* Mobile Phones */
 @media (max-width: 480px) {
 
+    h1{
+        font-size: medium;
+        text-wrap: wrap;
+    }
+
     .choices{
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
-        gap: 15px;
+        gap: 4px;
+        width: 80vw;
+        margin: 0 40px;
     }
 
+    
     .choice img{
-        width: 100px;
-        height: 100px;
+    width: min(180px, 30vw);
+    height: min(180px, 30vw);
+}
+
+    .score-board{
+        width: 80vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        margin-left: 20px;
     }
 
+    .score, #gestureSelect1, #gestureSelect2{
+        font-size: medium;
+    }
+    
+    #gestureSelect1, #gestureSelect2{
+        width: 40vw;
+        text-align: center;
+        height: 2vh;
+        text-wrap: wrap;
+    }
+
+    .mssg-cont{
+        width: 99%;
+        margin: 4px;
+    }
     #msg{
-        width: 90%;
+        width: 80%;
         font-size: 1rem;
         text-align: center;
+        text-wrap: wrap;
     }
 
     button{
@@ -201,7 +237,10 @@ button:hover{
     }
 
     #footer{
-        font-size: 12px;
-        padding: 10px;
+        font-size: small;
+        text-wrap: wrap;
+        text-align: center;
     }
+    
+
 }
