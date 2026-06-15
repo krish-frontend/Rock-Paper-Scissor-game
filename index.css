@@ -143,3 +143,65 @@ button:hover{
      height: 20px;
    
 }
+
+
+/* media query for better to view any screen */
+/* Desktop Large Screens */
+@media (min-width: 1200px) {
+
+}
+
+/* Laptops */
+@media (max-width: 1199px) {
+
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+
+    .choices{
+        gap: 20px;
+    }
+
+    .choice img{
+        width: 120px;
+        height: 120px;
+    }
+
+    #msg{
+        width: 80%;
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+
+    .choices{
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .choice img{
+        width: 100px;
+        height: 100px;
+    }
+
+    #msg{
+        width: 90%;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    button{
+        width: 120px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    #footer{
+        font-size: 12px;
+        padding: 10px;
+    }
+}
