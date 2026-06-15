@@ -41,8 +41,8 @@ const playGame=(userChoice)=>{
     let gestureSelectUser=document.querySelector("#gestureSelect1");
     gestureSelectUser.innerText = `You=> ${userChoice}`;
 
-    let gestureselectSystem= document.querySelector("#gestureSelect2");
-    gestureselectSystem.innerText =`System=> ${systemchoice}`;
+    let gestureSelectSystem= document.querySelector("#gestureSelect2");
+    gestureSelectSystem.innerText =`System=> ${systemchoice}`;
 
     
 
@@ -72,6 +72,8 @@ const playGame=(userChoice)=>{
             gameClosed = true;
             resultMssgShow.innerText="This Round--> User Wins..!!";
             againPlay.style.display="block";
+
+
         }
         else if(systemScore===5){
             gameClosed = true;
@@ -95,8 +97,13 @@ const playGame=(userChoice)=>{
             systemPoint.innerText=systemScore;
     
             resultMssgShow.innerText="Play Again & Defeat Your Opponent...!!";
+
+            gestureSelectUser.innerText ="--Select--";
+            gestureSelectSystem.innerText="--Select--";
+
             
-            againPlay.style.display="block";
+            againPlay.style.display="none";
+      
         
         })
     
